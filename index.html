@@ -274,14 +274,8 @@
   }
   .dark-mode .names { text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); }
   .names .amp {
-    display: inline-block; 
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    font-weight: 600; 
-    color: var(--accent-rose); 
-    font-size: 0.55em; 
-    margin: 0 15px; 
-    vertical-align: middle;
+    display: inline-block; font-family: 'Cormorant Garamond', serif; font-style: italic;
+    font-weight: 400; color: var(--accent-rose); font-size: 0.5em; margin: 0 10px; vertical-align: middle;
   }
   .wedding-date {
     font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 600; letter-spacing: 6px;
@@ -336,15 +330,7 @@
     font-family: 'Playfair Display', serif; font-size: 22px; color: var(--accent-gold); margin-bottom: 20px; font-style: italic;
   }
   .family-card p { font-size: 1.15rem; color: var(--text-primary); margin: 5px 0; font-weight: 600; }
-  .family-card .amp { 
-    color: var(--accent-rose); 
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    font-weight: 600;
-    font-size: 1.6rem; 
-    display: block; 
-    margin: 10px 0; 
-  }
+  .family-card .amp { color: var(--accent-rose); font-family: 'Great Vibes', cursive; font-size: 1.8rem; display: block; margin: 10px 0; }
   .family-card.godparents { border-color: rgba(183, 110, 121, 0.4); background: rgba(183, 110, 121, 0.05); }
 
   /* ====== COUNTDOWN ====== */
@@ -593,7 +579,7 @@
 
   /* ====== FOOTER ====== */
   .footer { text-align: center; padding: 60px 20px 80px; border-top: 1px solid rgba(197, 160, 89, 0.2); margin-top: 40px; }
-.footer-monogram { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 600; font-size: 56px; color: var(--accent-gold); margin-bottom: 20px; }
+  .footer-monogram { font-family: 'Great Vibes', cursive; font-size: 56px; color: var(--accent-gold); margin-bottom: 20px; }
   .footer-text { font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 4px; color: var(--text-secondary); text-transform: uppercase; opacity: 0.8; }
   .footer-hashtag { font-family: 'Playfair Display', serif; font-style: italic; font-size: 20px; color: var(--accent-rose); margin-top: 20px; font-weight: 600; }
 
@@ -642,16 +628,9 @@
   }
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-<!-- Etiquetas para compartir en WhatsApp/Facebook -->
-<meta property="og:title" content="Iris & Daniel · Nuestra Boda · 10.10.2026">
-<meta property="og:description" content="Con la bendición de Dios, te invitamos a celebrar nuestro gran día.">
-<meta property="og:image" content="https://duahtechai-ux.github.io/boda-iris-daniel/img/FTBD1.jpg">
-<meta property="og:url" content="https://duahtechai-ux.github.io/boda-iris-daniel/">
-<meta property="og:type" content="website">
 </head>
 <body>
-<script>
-/* ============================================
+
 <!-- ====== SOBRE ANIMADO ====== -->
 <div class="envelope-overlay" id="envelopeOverlay">
   <div class="envelope" id="envelope" onclick="openEnvelope()">
@@ -694,10 +673,11 @@
 </div>
 
 <div class="wrapper">
+
   <!-- ====== HERO ====== -->
   <section class="hero">
-   <div class="save-date">🕊️ Save the Date 🕊️</div>
-   <h1 class="names">Iris<span class="amp">&</span>Daniel</h1>
+    <div class="save-date">Save the Date</div>
+    <h1 class="names">Iris<span class="amp">&</span>Daniel</h1>
     <div class="wedding-date">
       <span class="divider"></span>
       <span>Sábado · 10 de Octubre · 2026</span>
@@ -723,7 +703,7 @@
     <div class="family-grid">
       <div class="family-card">
         <h3>Padres de la Novia</h3>
-        <p>Alejandrina Vásquez Reategui</p>
+        <p>Alejandrina Vasquez Reategui</p>
         <span class="amp">&</span>
         <p>Guzmán Espinoza Gavidia</p>
       </div>
@@ -933,7 +913,9 @@
       <p style="font-family: 'Cormorant Garamond', serif; font-size: clamp(18px, 2.5vw, 22px); font-weight: 600; color: var(--accent-rose); line-height: 1.7;">
         ¡Gracias por ser parte de esta nueva aventura en la que Dios será el principal protagonista!
       </p>
-
+      <div style="margin-top: 30px; font-family: 'Great Vibes', cursive; font-size: 32px; color: var(--accent-gold);">
+        Iris & Daniel
+      </div>
     </div>
   </section>
   <!-- ====== MESA DE REGALOS ====== -->
@@ -996,7 +978,11 @@
         "Por encima de todo vístanse de amor que es el vínculo perfecto"
       </p>
       <div class="color-palette">
-       
+        <div class="color-swatch" style="background: #0A2533;" data-name="Azul petróleo"></div>
+        <div class="color-swatch" style="background: #8FA89A;" data-name="Salvia"></div>
+        <div class="color-swatch" style="background: #C5A059;" data-name="Dorado"></div>
+        <div class="color-swatch" style="background: #B76E79;" data-name="Rosa viejo"></div>
+        <div class="color-swatch" style="background: #EAF4F6; border-color: #ccc;" data-name="Turquesa hielo"></div>
       </div>
     </div>
   </section>
