@@ -651,22 +651,54 @@
 </head>
 <body>
 
-<!-- ====== SOBRE ANIMADO ====== -->
-<div class="envelope-overlay" id="envelopeOverlay">
-  <div class="envelope" id="envelope" onclick="openEnvelope()">
-    <div class="envelope-body">
-      <div class="envelope-letter">
-        <div class="names">Iris & Daniel</div>
-        <div class="date">10 · 10 · 2026</div>
+<!-- ====== SOBRE ANIMADO DE APERTURA ====== -->
+<div class="envelope-overlay" id="envelopeOverlay" role="dialog" aria-label="Invitación de boda">
+  <div class="envelope-wrapper">
+    <div 
+      class="envelope" 
+      id="envelope" 
+      onclick="openEnvelope()" 
+      onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openEnvelope();}"
+      role="button" 
+      tabindex="0"
+      aria-label="Abrir invitación de Iris y Daniel"
+    >
+      <div class="envelope-body">
+        <div class="envelope-letter">
+          <div class="letter-content">
+            <div class="letter-ornament">✦</div>
+            <div class="names">Iris <span class="amp">&</span> Daniel</div>
+            <div class="invite-text">Estás invitado a nuestra boda</div>
+            <div class="letter-divider"></div>
+            <div class="date">10 · 10 · 2026</div>
+          </div>
+        </div>
+      </div>
+      <div class="envelope-flap"></div>
+      <div class="envelope-seal" aria-hidden="true">
+        <span>I</span>
+        <span class="seal-heart">♥</span>
+        <span>D</span>
       </div>
     </div>
-    <div class="envelope-flap"></div>
-    <div class="envelope-seal">I♥D</div>
+    <div class="envelope-instruction">
+      <span class="instruction-text">Toca el sello para abrir</span>
+      <span class="instruction-arrow">↓</span>
+    </div>
   </div>
-  <div class="envelope-instruction">Toca para abrir</div>
 </div>
 
-<canvas id="petals-canvas"></canvas>
+<!-- Fallback si JavaScript está deshabilitado -->
+<noscript>
+  <div style="text-align:center; padding:40px; font-family:'Playfair Display',serif;">
+    <h1>Iris & Daniel</h1>
+    <p>10 · 10 · 2026</p>
+    <p>Por favor, activa JavaScript para ver la invitación completa.</p>
+  </div>
+</noscript>
+
+<!-- Canvas de pétalos (se activa después de abrir el sobre) -->
+<canvas id="petals-canvas" aria-hidden="true"></canvas>
 
 <!-- ====== AUDIO MP3 ====== -->
 <audio id="bgMusic" loop preload="auto">
