@@ -799,8 +799,10 @@ body.dark-mode .envelope-overlay {
 <meta property="og:type" content="website">
 </head>
 <body>
-
-/* ====== SOBRE ANIMADO Y MÚSICA AUTOMÁTICA ====== */
+<script>
+/* ============================================
+   0. SOBRE ANIMADO Y MÚSICA AUTOMÁTICA
+   ============================================ */
 let envelopeOpened = false;
 
 function openEnvelope() {
@@ -828,7 +830,9 @@ function openEnvelope() {
   }, 800);
 }
 
-/* ====== CANVAS PÉTALOS OPTIMIZADO ====== */
+/* ============================================
+   1. CANVAS PÉTALOS OPTIMIZADO
+   ============================================ */
 const canvas = document.getElementById('petals-canvas');
 const ctx = canvas.getContext('2d');
 let petals = [];
@@ -901,7 +905,7 @@ document.addEventListener('visibilitychange', () => {
     animatePetals();
   }
 });
-
+</script>
   <!-- ====== HERO ====== -->
   <section class="hero">
    <div class="save-date">🕊️ Save the Date 🕊️</div>
