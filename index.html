@@ -652,111 +652,48 @@
 <body>
 <script>
 /* ============================================
-   0. SOBRE ANIMADO Y MÚSICA AUTOMÁTICA
-   ============================================ */
-let envelopeOpened = false;
+<!-- ====== SOBRE ANIMADO ====== -->
+<div class="envelope-overlay" id="envelopeOverlay">
+  <div class="envelope" id="envelope" onclick="openEnvelope()">
+    <div class="envelope-body">
+      <div class="envelope-letter">
+        <div class="names">Iris & Daniel</div>
+        <div class="date">10 · 10 · 2026</div>
+      </div>
+    </div>
+    <div class="envelope-flap"></div>
+    <div class="envelope-seal">I♥D</div>
+  </div>
+  <div class="envelope-instruction">Toca para abrir</div>
+</div>
 
-function openEnvelope() {
-  if (envelopeOpened) return; // Evita doble clic
-  envelopeOpened = true;
-  
-  const envelope = document.getElementById('envelope');
-  const overlay = document.getElementById('envelopeOverlay');
-  envelope.classList.add('opening');
-  
-  const bgMusic = document.getElementById('bgMusic');
-  bgMusic.volume = 0.5;
-  bgMusic.play().then(() => {
-    updateMusicUI(true);
-  }).catch(e => console.log("Autoplay prevenido por el navegador:", e));
+<canvas id="petals-canvas"></canvas>
 
-  setTimeout(() => {
-    overlay.classList.add('opened');
-    setTimeout(() => {
-      overlay.style.display = 'none';
-      // Iniciar pétalos solo después de abrir (mejor rendimiento)
-      initPetals();
-      animatePetals();
-    }, 1500);
-  }, 800);
-}
+<!-- ====== AUDIO MP3 ====== -->
+<audio id="bgMusic" loop preload="auto">
+  <source src="musica-boda.mp3" type="audio/mpeg">
+</audio>
 
-/* ============================================
-   1. CANVAS PÉTALOS OPTIMIZADO
-   ============================================ */
-const canvas = document.getElementById('petals-canvas');
-const ctx = canvas.getContext('2d');
-let petals = [];
-let animationId = null;
-let petalsActive = false;
+<!-- Controles flotantes -->
+<div class="floating-controls">
+  <div class="control-btn" id="musicControl" onclick="toggleMusic()">
+    <svg class="music-icon" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+    </svg>
+    <div class="music-bars" id="musicBars">
+      <span></span><span></span><span></span>
+    </div>
+    <div class="control-label" id="musicLabel">Música</div>
+  </div>
+  <div class="control-btn" onclick="toggleMode()">
+    <svg id="modeIcon" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 0 1-4.4 2.26 5.403 5.403 0 0 1-3.14-9.8c-.44-.06-.9-.1-1.36-.1z"/>
+    </svg>
+    <div class="control-label" id="modeLabel">Modo</div>
+  </div>
+</div>
 
-function resize() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-}
-resize();
-window.addEventListener('resize', resize);
-
-class Petal {
-  constructor() {
-    this.reset();
-    this.y = Math.random() * canvas.height;
-  }
-  reset() {
-    this.x = Math.random() * canvas.width;
-    this.y = -20;
-    this.size = Math.random() * 5 + 2;
-    this.speedY = Math.random() * 0.6 + 0.2;
-    this.speedX = (Math.random() - 0.5) * 0.3;
-    this.rotation = Math.random() * Math.PI * 2;
-    this.rotationSpeed = (Math.random() - 0.5) * 0.015;
-    this.opacity = Math.random() * 0.3 + 0.15;
-    const colors = ['255, 255, 255', '197, 160, 89', '212, 235, 240', '183, 110, 121'];
-    this.color = colors[Math.floor(Math.random() * colors.length)];
-  }
-  update() {
-    this.y += this.speedY;
-    this.x += this.speedX + Math.sin(this.y * 0.01) * 0.2;
-    this.rotation += this.rotationSpeed;
-    if (this.y > canvas.height + 20) this.reset();
-  }
-  draw() {
-    ctx.save();
-    ctx.translate(this.x, this.y);
-    ctx.rotate(this.rotation);
-    ctx.globalAlpha = this.opacity;
-    ctx.fillStyle = `rgba(${this.color}, 1)`;
-    ctx.beginPath();
-    ctx.ellipse(0, 0, this.size, this.size * 1.5, 0, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.restore();
-  }
-}
-
-function initPetals() {
-  petals = [];
-  const count = Math.min(35, Math.floor(canvas.width / 35));
-  for (let i = 0; i < count; i++) petals.push(new Petal());
-}
-
-function animatePetals() {
-  if (!petalsActive) return;
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  petals.forEach(p => { p.update(); p.draw(); });
-  animationId = requestAnimationFrame(animatePetals);
-}
-
-// Pausar pétalos cuando la pestaña no está activa (ahorra batería)
-document.addEventListener('visibilitychange', () => {
-  if (document.hidden) {
-    petalsActive = false;
-    if (animationId) cancelAnimationFrame(animationId);
-  } else if (envelopeOpened) {
-    petalsActive = true;
-    animatePetals();
-  }
-});
-</script>
+<div class="wrapper">
   <!-- ====== HERO ====== -->
   <section class="hero">
    <div class="save-date">🕊️ Save the Date 🕊️</div>
